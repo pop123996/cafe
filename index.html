@@ -108,12 +108,23 @@ style="background-image:url('https://images.unsplash.com/photo-1600891964599-f61
     </button>
   </form>
 </section>
-<div id="cart" class="fixed right-5 bottom-5 bg-black p-5 rounded-lg shadow-lg w-64">
+  
+<!-- Cart UI -->
+<div id="cart" class="fixed right-5 bottom-5 bg-black p-5 rounded-lg shadow-lg w-64 text-white">
   <h3 class="text-yellow-400 text-lg mb-2">🛒 Cart</h3>
+
   <ul id="cartItems" class="text-sm mb-3"></ul>
-  <p class="font-bold">Total: ₹<span id="total">0</span></p>
-  <button id="checkoutBtn">Checkout</button>
+
+  <p class="font-bold mb-2">
+    Total: ₹<span id="total">0</span>
+  </p>
+
+  <button id="checkoutBtn"
+    class="bg-yellow-400 text-black px-4 py-2 rounded w-full hover:bg-yellow-500">
+    Checkout
+  </button>
 </div>
+  
 <!-- Footer -->
 <footer class="text-center p-5 bg-black text-gray-400">
   <p>© 2026 Royal Bites | All Rights Reserved</p>
