@@ -1,40 +1,91 @@
-// Fade Animation
-const elements = document.querySelectorAll(".fade-in");
+let cart = [];
 
-window.addEventListener("scroll", () => {
-  elements.forEach(el => {
-    const pos = el.getBoundingClientRect().top;
-    if (pos < window.innerHeight - 100) {
-      el.classList.add("show");
+const cartItems = document.getElementById("cartItems");
+const totalEl = document.getElementById("total");
+const cartDiv = document.getElementById("cart");
+
+// Toggle Cart
+document.getElementById("cartToggle").addEventListener("click", () => {
+  cartDiv.classList.toggle("hidden");
+});
+
+
+// Add to Cart
+document.querySelectorAll(".add-to-cart").forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    const name = btn.getAttribute("data-name");
+    const price = parseInt(btn.getAttribute("data-price"));
+
+    let existing = cart.find(item => item.name === name);
+
+    if (existing) {
+      existing.qty++;
+    } else {
+      cart.push({ name, price, qty: 1 });
     }
+
+    updateCart();
   });
 });
 
 
-// Order Button
-document.getElementById("orderBtn").addEventListener("click", () => {
-  alert("Order feature coming soon 🚀");
-});
+// Update Cart UI
+function updateCart() {
+  cartItems.innerHTML = "";
+  let total = 0;
 
+  cart.forEach((item, index) => {
+    total += item.price * item.qty;
 
-// Contact Form
-const form = document.getElementById("contactForm");
+    const li = document.createElement("li");
+    li.classList.add("cart-item");
 
-form.addEventListener("submit", function(e) {
-  e.preventDefault();
+    li.innerHTML = `
+      <span>${item.name}</span>
+      <div>
+        <button class="qty-btn" onclick="changeQty(${index}, -1)">-</button>
+        ${item.qty}
+        <button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
+        <span class="remove-btn" onclick="removeItem(${index})">❌</span>
+      </div>
+    `;
 
-  const inputs = form.querySelectorAll("input, textarea");
-  let valid = true;
-
-  inputs.forEach(input => {
-    if (input.value === "") valid = false;
+    cartItems.appendChild(li);
   });
 
-  if (!valid) {
-    alert("Fill all fields ❗");
+  totalEl.innerText = total;
+}
+
+
+// Change Quantity
+function changeQty(index, change) {
+  cart[index].qty += change;
+
+  if (cart[index].qty <= 0) {
+    cart.splice(index, 1);
+  }
+
+  updateCart();
+}
+
+
+// Remove Item
+function removeItem(index) {
+  cart.splice(index, 1);
+  updateCart();
+}
+
+
+// Checkout
+document.getElementById("checkoutBtn").addEventListener("click", () => {
+  if (cart.length === 0) {
+    alert("Cart is empty ❗");
     return;
   }
 
-  alert("Message Sent ✅");
-  form.reset();
+  alert("Order placed 🎉 Total: ₹" + totalEl.innerText);
+
+  cart = [];
+  updateCart();
 });
