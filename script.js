@@ -1,23 +1,40 @@
-function showMessage() {
-    document.getElementById("message").innerHTML =
-        "Tum meri life ka sabse khoobsurat hissa ho ❤️ I Love You Forever 💖";
+// Fade Animation
+const elements = document.querySelectorAll(".fade-in");
 
-    createHearts();
-}
-
-function createHearts() {
-    for (let i = 0; i < 20; i++) {
-        let heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.innerHTML = "❤️";
-
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
-
-        document.body.appendChild(heart);
-
-        setTimeout(() => {
-            heart.remove();
-        }, 5000);
+window.addEventListener("scroll", () => {
+  elements.forEach(el => {
+    const pos = el.getBoundingClientRect().top;
+    if (pos < window.innerHeight - 100) {
+      el.classList.add("show");
     }
-}
+  });
+});
+
+
+// Order Button
+document.getElementById("orderBtn").addEventListener("click", () => {
+  alert("Order feature coming soon 🚀");
+});
+
+
+// Contact Form
+const form = document.getElementById("contactForm");
+
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const inputs = form.querySelectorAll("input, textarea");
+  let valid = true;
+
+  inputs.forEach(input => {
+    if (input.value === "") valid = false;
+  });
+
+  if (!valid) {
+    alert("Fill all fields ❗");
+    return;
+  }
+
+  alert("Message Sent ✅");
+  form.reset();
+});
