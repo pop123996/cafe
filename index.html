@@ -1,28 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I Love You ❤️</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Royal Bites Restaurant</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
 </head>
-<body>
 
-    <div class="container">
-        <h1>I Love You ❤️</h1>
+<body class="bg-gray-900 text-white">
 
-        <p class="shayari">
-            "Teri muskaan meri pehchaan hai,  
-            Teri khushi meri jaan hai,  
-            Kuch bhi nahi meri zindagi mein,  
-            Bas tu hi meri pehchaan hai ❤️"
-        </p>
+<!-- Navbar -->
+<header class="fixed w-full top-0 z-50 bg-black/70 backdrop-blur-md shadow-lg">
+  <div class="flex justify-between items-center p-5 max-w-7xl mx-auto">
+    <h1 class="text-2xl font-bold text-yellow-400">Royal Bites</h1>
 
-        <button onclick="showMessage()">Click Here 💖</button>
+    <nav class="space-x-6 hidden md:block">
+      <a href="#home" class="hover:text-yellow-400 transition">Home</a>
+      <a href="#menu" class="hover:text-yellow-400 transition">Menu</a>
+      <a href="#about" class="hover:text-yellow-400 transition">About</a>
+      <a href="#contact" class="hover:text-yellow-400 transition">Contact</a>
+    </nav>
+  </div>
+</header>
 
-        <p id="message"></p>
+<!-- Hero Section -->
+<section id="home" class="h-screen flex flex-col justify-center items-center text-center bg-cover bg-center px-4"
+style="background-image:url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092');">
+
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-black/60"></div>
+
+  <div class="relative z-10">
+    <h2 class="text-5xl md:text-6xl font-bold mb-4">Delicious Food, Delivered Fast</h2>
+    <p class="text-lg mb-6 text-gray-300">Experience the taste of luxury</p>
+
+    <button class="bg-yellow-400 text-black px-8 py-3 rounded-full hover:bg-yellow-500 transition transform hover:scale-105">
+      Order Now
+    </button>
+  </div>
+</section>
+
+<!-- Menu Section -->
+<section id="menu" class="py-20 px-6 max-w-7xl mx-auto">
+  <h2 class="text-4xl text-center mb-12 text-yellow-400 font-bold">Our Menu</h2>
+
+  <div class="grid md:grid-cols-3 gap-8">
+
+    <!-- Item 1 -->
+    <div class="bg-gray-800 p-5 rounded-xl shadow-lg hover:scale-105 transition duration-300">
+      <img src="https://images.unsplash.com/photo-1604908176997-431b3f1b6a76" class="rounded-lg mb-4 w-full h-48 object-cover">
+      <h3 class="text-xl font-bold">Pizza</h3>
+      <p class="text-gray-400">Cheesy delight with fresh toppings</p>
+      <p class="text-yellow-400 mt-2 font-bold">₹299</p>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Item 2 -->
+    <div class="bg-gray-800 p-5 rounded-xl shadow-lg hover:scale-105 transition duration-300">
+      <img src="https://images.unsplash.com/photo-1550547660-d9450f859349" class="rounded-lg mb-4 w-full h-48 object-cover">
+      <h3 class="text-xl font-bold">Burger</h3>
+      <p class="text-gray-400">Juicy and crispy burgers</p>
+      <p class="text-yellow-400 mt-2 font-bold">₹199</p>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="bg-gray-800 p-5 rounded-xl shadow-lg hover:scale-105 transition duration-300">
+      <img src="https://images.unsplash.com/photo-1529042410759-befb1204b468" class="rounded-lg mb-4 w-full h-48 object-cover">
+      <h3 class="text-xl font-bold">Pasta</h3>
+      <p class="text-gray-400">Italian pasta with rich flavors</p>
+      <p class="text-yellow-400 mt-2 font-bold">₹249</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-20 px-6 bg-gray-800 text-center">
+  <h2 class="text-4xl mb-6 text-yellow-400 font-bold">About Us</h2>
+  <p class="max-w-2xl mx-auto text-gray-300 leading-relaxed">
+    We serve premium quality food made with fresh ingredients by top chefs.
+    Our goal is to deliver an unforgettable dining experience with every bite.
+  </p>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-20 px-6">
+  <h2 class="text-4xl text-center mb-8 text-yellow-400 font-bold">Contact Us</h2>
+
+  <form class="max-w-xl mx-auto space-y-4">
+    <input type="text" placeholder="Your Name"
+      class="w-full p-3 rounded bg-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+
+    <input type="email" placeholder="Your Email"
+      class="w-full p-3 rounded bg-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+
+    <textarea placeholder="Your Message"
+      class="w-full p-3 rounded bg-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-400"></textarea>
+
+    <button
+      class="bg-yellow-400 text-black px-6 py-3 rounded-full hover:bg-yellow-500 transition w-full transform hover:scale-105">
+      Send Message
+    </button>
+  </form>
+</section>
+
+<!-- Footer -->
+<footer class="text-center p-5 bg-black text-gray-400">
+  <p>© 2026 Royal Bites | All Rights Reserved</p>
+</footer>
+
 </body>
 </html>
